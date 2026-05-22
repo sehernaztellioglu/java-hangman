@@ -2,9 +2,14 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-  static int x;
+   int x;
 
-    public static void myMethod(){
+   public static void myWelcome(){
+       System.out.println("||WELCOME TO THE HANGMAN GAME||");
+       System.out.println("\nYOUR WORD IS: ");
+   }
+
+    public void myHangman(){
 
       if (x == 0){
           System.out.printf("%5s", "O");
@@ -20,4 +25,20 @@ public class Main {
           System.out.printf("%7s","\\");
       }
   }
+    public static void myWord(){
+        String word = "coconut";
+        int length = word.length();
+
+        for(int i = 0; i < length; i++){
+            System.out.print("_ ");
+        }
+  }
+  public static void main(String[] args) {
+   myWelcome();
+   myWord();
+
+
+
+  }
+
 }
