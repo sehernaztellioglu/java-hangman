@@ -46,7 +46,9 @@ class Game {
         int i = 0;
         String text = "_".repeat(length);
 
-        while (i <= length) {
+        int totalPossibility = word.length() + 6;
+
+        while (i <= totalPossibility) {
 
             System.out.print(text);
 
@@ -55,6 +57,7 @@ class Game {
             String userLetter = myObj.nextLine();
             String lowerCase = userLetter.toLowerCase();
 
+            boolean changed = false;
 
             for(int j = 0; j < length; j++) {
 
@@ -63,26 +66,25 @@ class Game {
 
                 if (Letters.equals(lowerCase)) {
                     text = changingLetter(text, j, lowerCase);
+                    changed = true;
 
-                } else if(){
-                    myHangman();
-                    x++;
-                    if(x == 6){
-                        System.out.println("YOU LOST");
-                        break;
-                    }
                 }
             }
-        }
-
+            if(!changed){
+                myHangman();
+                x++;
+            }
+            if(x == 6){
+                System.out.println("YOU LOST");
+                break;
+            }
             i++;
 
-            if (text.equals(word)){
+                 if (text.equals(word)) {
 
-                System.out.println(text);
-                System.out.println("YOU WON");
-
-
+                     System.out.println("YOU WON");
+                     break;
+                 }
             }
         }
     }
