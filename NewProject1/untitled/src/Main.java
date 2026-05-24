@@ -30,14 +30,24 @@ class Game {
     }
 
 
+    public static String changingLetter(String text, int index, String newChar){
+
+        return text.substring(0, index)
+                + newChar
+                + text.substring(index + 1);
+
+    }
+
+
     public void main(String[] args) {
         myWelcome();
         Scanner myObj = new Scanner(System.in);
 
         int i = 0;
+        String text = "_".repeat(length);
 
-        while (i < length) {
-            String text = "_ ".repeat(length);
+        while (i <= length) {
+
             System.out.print(text);
 
             System.out.println("\n\nENTER A LETTER: ");
@@ -45,22 +55,34 @@ class Game {
             String userLetter = myObj.nextLine();
             String lowerCase = userLetter.toLowerCase();
 
-            String c = String.valueOf(word.charAt(i));
 
+            for(int j = 0; j < length; j++) {
 
-            if (c.equals(lowerCase)) {
-                text = text.replace("c","upperCase");
+                String checkText = text;
+                String Letters = String.valueOf(word.charAt(j));
 
+                if (Letters.equals(lowerCase)) {
+                    text = changingLetter(text, j, lowerCase);
 
-            } else {
-                myHangman();
-                x++;
-                if (x == 6){
-                    System.out.println("YOU LOST");
-                    break;
+                } else if(){
+                    myHangman();
+                    x++;
+                    if(x == 6){
+                        System.out.println("YOU LOST");
+                        break;
+                    }
                 }
             }
+        }
+
             i++;
+
+            if (text.equals(word)){
+
+                System.out.println(text);
+                System.out.println("YOU WON");
+
+
+            }
         }
     }
-}
